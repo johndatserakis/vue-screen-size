@@ -4,4 +4,7 @@ const install = (Vue) => {
     Vue.mixin(VueScreenSizeMixin)
 }
 
-export default { install }
+// Note that here we're not only exporting the install function, but
+// also the mixin itself - this is so with can `Vue.use()` or
+// `mixins: [],` it.
+export default { install, VueScreenSizeMixin }

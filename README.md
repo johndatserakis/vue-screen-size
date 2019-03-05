@@ -36,15 +36,15 @@ Or you can include it through the browser at the bottom of your page:
 
 ### About
 
-Sometimes when building an app you need to have access to the screen's dimensions. Usually that's going to be in the css - but sometimes you need to access that info right in your JavaScript.
+Sometimes when building an app you need to have access to the screen's dimensions. Usually that's going to be done in the css using `@media` - but sometimes you need to access that info right in your JavaScript.
 
 The issue with this is you have to worry about adding event listeners and then removing them later. We wanted to just be able to import something quickly and then be able to forget about it later. So this `mixin` does just that - just use `Vue.use()` or `mixins: [],` and you're off.
 
 There is something to consider - where and how you include this library. There are two ways, make sure to be aware of the differences:
 
-### Usage Example 1 - Whole app has access
+### Usage Example 1 - Whole app has access (Not Recommended)
 
-In this usage - your whole app - and every child component - has access to the `$vssWidth`, `$vssHeight`, and `$vssEvent` variables. This is sorta pollutive though, as multiple instances of the mixin are initialized and it's kinda wasteful. The is due to the way Vue mixins are passed down to child components. The second example is recommended.
+In this usage - your whole app - and every child component - has access to the `$vssWidth`, `$vssHeight`, and `$vssEvent` variables. This is sorta pollutive though, as multiple instances of the mixin are initialized and it's kinda wasteful. The is due to the way Vue mixins are passed down to child components. You can read more about this [here](https://vuejs.org/v2/guide/mixins.html#Global-Mixin). The second example is recommended.
 
 ```javascript
 import VueScreenSize from 'vue-screen-size'
@@ -53,19 +53,28 @@ Vue.use(VueScreenSize)
 // Access `this.$vssWidth`, `this.$vssHeight`, and `this.$vssEvent` anywhere in your app.
 ```
 
-### Usage Example 2 - Just the component you install it on has access - Recommended
+### Usage Example 2 - Just the component you install it on has access - (Recommended)
 
-In this usage - the the component you install it on will have access to the `$vssWidth`, `$vssHeight`, and `$vssEvent` variables. This may be a bit more restrictive, but it's less wasteful and should give you better performance.
+In this usage - the component you install it on will have access to the `$vssWidth`, `$vssHeight`, and `$vssEvent` variables. This may be a bit more restrictive, but it's less wasteful and should give you better performance.
 
 ```javascript
 import VueScreenSize from 'vue-screen-size'
 
 export default {
     ...
-    mixins: [VueScreenSizeMixin],
+    mixins: [VueScreenSize.VueScreenSizeMixin],
     ...
 }
+
+// Access `this.$vssWidth`, `this.$vssHeight`, and `this.$vssEvent` in your component.
 ```
+### Variables
+
+| name | type | description |
+|--------|------------|-------------|
+| $vssWidth | Number | The width of your screen |
+| $vssHeight | Number | The height of your screen |
+| $vssEvent | Object | The event object data from the resizing event. |
 
 ### Methods
 
