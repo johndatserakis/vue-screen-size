@@ -1,7 +1,7 @@
 {
   "name": "vue-screen-size",
   "version": "1.0.0",
-  "description": "Show a banner with text, a decline button, and an accept button on your page.",
+  "description": "Get easy and reactive access to the width and height of your screen.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -13,11 +13,10 @@
   },
   "keywords": [
     "vue",
-    "gdpr",
-    "banner",
-    "accept",
-    "decline",
-    "cookie"
+    "screen",
+    "size",
+    "width",
+    "height"
   ],
   "main": "dist/vue-screen-size.umd.js",
   "module": "dist/vue-screen-size.esm.js",
