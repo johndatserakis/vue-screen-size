@@ -55,6 +55,9 @@ var install = function (Vue$$1) {
     Vue$$1.mixin(VueScreenSizeMixin);
 };
 
+// Note that here we're not only exporting the install function, but
+// also the mixin itself - this is so with can `Vue.use()` or
+// `mixins: [],` it.
 var index = { install: install, VueScreenSizeMixin: VueScreenSizeMixin }
 
 export default index;
