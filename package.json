@@ -6,10 +6,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/promosis/vue-screen-size.git"
+    "url": "git+https://github.com/johndatserakis/vue-screen-size.git"
   },
   "bugs": {
-    "url": "https://github.com/promosis/vue-screen-size/issues"
+    "url": "https://github.com/johndatserakis/vue-screen-size/issues"
   },
   "keywords": [
     "vue",
@@ -26,11 +26,11 @@
   },
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "watch:vue-cli": "vue serve ./src/vue-screen-size.vue",
-    "build": "rm -rf ./dist npm run build:unpkg & npm run build:es & npm run build:umd & npm run build:unpkg",
+    "build": "npm run test && npm run build:example && npm run build:library",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-screen-size.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-screen-size.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-screen-size.min.js",
+    "build:library": "rm -rf ./dist npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
     "build:example": "rm -rf ./docs && cross-env NODE_ENV=production webpack --progress --hide-modules",
     "test": "jest"
   },

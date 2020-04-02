@@ -6,17 +6,17 @@ Get easy and reactive access to the width and height of your screen.
   <a href="https://www.npmjs.com/package/vue-screen-size"><img src="https://img.shields.io/npm/v/vue-screen-size.svg" alt="NPM Version"></a>
   <a href="https://www.npmjs.com/package/vue-screen-size"><img src="https://img.shields.io/npm/dm/vue-screen-size.svg" alt="NPM Downloads"></a>
   <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
-  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fpromosis%2Fvue-screen-size&text=Check%20out%20vue-screen-size%20on%20GitHub&via=promosis">
-  <img src="https://img.shields.io/twitter/url/https/github.com/promosis/vue-screen-size.svg?style=social" alt="Tweet"></a>
+  <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fjohndatserakis%2Fvue-screen-size&text=Check%20out%20vue-screen-size%20on%20GitHub&via=johndatserakis">
+  <img src="https://img.shields.io/twitter/url/https/github.com/johndatserakis/vue-screen-size.svg?style=social" alt="Tweet"></a>
 </p>
 
 ### Links
 
-[View demo](https://promosis.github.io/vue-screen-size/)
+[View demo](https://johndatserakis.github.io/vue-screen-size/)
 
 [View on npm](https://www.npmjs.com/package/vue-screen-size)
 
-[View on GitHub](https://github.com/promosis/vue-screen-size)
+[View on GitHub](https://github.com/johndatserakis/vue-screen-size)
 
 ### Install
 
