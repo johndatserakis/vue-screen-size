@@ -1,6 +1,6 @@
 {
   "name": "vue-screen-size",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get easy and reactive access to the width and height of your screen.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
   "license": "MIT",
