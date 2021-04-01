@@ -21,6 +21,7 @@
   "main": "dist/vue-screen-size.umd.js",
   "module": "dist/vue-screen-size.esm.js",
   "unpkg": "dist/vue-screen-size.min.js",
+  "typings": "src/types.d.ts",
   "browser": {
     "./sfc": "src/vue-screen-size.vue"
   },
