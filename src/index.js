@@ -6,5 +6,5 @@ const install = (app) => {
 
 export default install;
 
-// Also export the actual mixing so users can use it on a single component
+// Also export the actual mixin so consumers can use it on a single component if they choose
 export { VueScreenSizeMixin };
