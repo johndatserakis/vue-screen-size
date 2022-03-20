@@ -1,68 +1,46 @@
 {
-  "name": "vue-screen-size",
-  "version": "1.0.1",
-  "description": "Get easy and reactive access to the width and height of your screen.",
   "author": "John Datserakis <johndatserakis@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johndatserakis/vue-screen-size.git"
+  "browser": {
+    "./sfc": "src/vue-screen-size.vue"
   },
   "bugs": {
     "url": "https://github.com/johndatserakis/vue-screen-size/issues"
   },
-  "keywords": [
-    "vue",
-    "screen",
-    "size",
-    "width",
-    "height"
-  ],
-  "main": "dist/vue-screen-size.umd.js",
-  "module": "dist/vue-screen-size.esm.js",
-  "unpkg": "dist/vue-screen-size.min.js",
-  "browser": {
-    "./sfc": "src/vue-screen-size.vue"
-  },
-  "scripts": {
-    "watch": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "npm run test && npm run build:example && npm run build:library",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-screen-size.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-screen-size.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-screen-size.min.js",
-    "build:library": "rm -rf ./dist npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
-    "build:example": "rm -rf ./docs && cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "test": "jest"
-  },
   "dependencies": {},
+  "description": "Get easy and reactive access to the width and height of your screen.",
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.25",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "cross-env": "^5.1.6",
-    "css-loader": "^0.28.7",
-    "file-loader": "^1.1.4",
-    "minimist": "^1.2.0",
-    "node-sass": "^4.5.3",
-    "rollup": "^0.57.1",
-    "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-terser": "^4.0.3",
-    "rollup-plugin-vue": "^4.3.0",
-    "rollup-plugin-css-only": "^0.4.0",
-    "sass-loader": "^7.0.1",
-    "vue": "^2.5.16",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@vue/compiler-sfc": "^3.2.31",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.0.0",
+    "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.6.0",
+    "jest": "^24.8.0",
     "jest-serializer-vue": "^2.0.2",
-    "vue-jest": "^2.6.0"
+    "mini-css-extract-plugin": "^0.11.2",
+    "minimist": "^1.2.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.15.6",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.3",
+    "rollup-plugin-terser": "^5.0.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^7.1.0",
+    "terser-webpack-plugin": "^1.3.0",
+    "vue": "^3.2.31",
+    "vue-jest": "^5.0.0-alpha.10",
+    "vue-loader": "^17.0.0",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -72,12 +50,43 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    },
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
-    ]
-  }
+    ],
+    "transform": {
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
+  },
+  "keywords": [
+    "vue",
+    "screen",
+    "size",
+    "width",
+    "height"
+  ],
+  "license": "MIT",
+  "main": "dist/vue-screen-size.umd.js",
+  "module": "dist/vue-screen-size.esm.js",
+  "name": "vue-screen-size",
+  "peerDependencies": {
+    "vue": "^3.2.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johndatserakis/vue-screen-size.git"
+  },
+  "scripts": {
+    "build": "npm run test && npm run build:example && npm run build:library",
+    "build:es": "rollup --config rollup.config.js --format es --file dist/vue-screen-size.esm.js",
+    "build:example": "rimraf docs && cross-env NODE_ENV=production webpack --progress --hide-modules --mode production",
+    "build:library": "rimraf dist npm run build:umd & npm run build:es & npm run build:umd & npm run build:unpkg",
+    "build:umd": "rollup --config rollup.config.js --format umd --file dist/vue-screen-size.umd.js",
+    "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/vue-screen-size.min.js",
+    "test": "jest",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
+  },
+  "sideEffects": false,
+  "unpkg": "dist/vue-screen-size.min.js",
+  "version": "2.0.0"
 }

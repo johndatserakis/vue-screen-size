@@ -1,11 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-// This is an example of loading it the gloabl way.
-// import VueScreenSize from '../src/index.js'
-// Vue.use(VueScreenSize)
+const app = createApp(App);
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+// This is an example of loading it the global way.
+// import { VueScreenSizeMixin } from '../src/index.js';
+// app.mixin(VueScreenSizeMixin);
+
+app.mount('#app');

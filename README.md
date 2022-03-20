@@ -10,21 +10,19 @@ Get easy and reactive access to the width and height of your screen.
   <img src="https://img.shields.io/twitter/url/https/github.com/johndatserakis/vue-screen-size.svg?style=social" alt="Tweet"></a>
 </p>
 
-### Links
+## Vue 3 Support
 
-[View demo](https://johndatserakis.github.io/vue-screen-size/)
+Vue 3 is supported from `v2.0.0` and beyond (current `master`). To use `vue-screen-size` with Vue 2, use `v1.0.1`.
 
-[View on npm](https://www.npmjs.com/package/vue-screen-size)
+## Links
 
-[View on GitHub](https://github.com/johndatserakis/vue-screen-size)
+- [Demo](https://johndatserakis.github.io/vue-screen-size/)
+- [GitHub](https://github.com/johndatserakis/vue-screen-size)
+- [npm](https://www.npmjs.com/package/vue-screen-size)
 
-### Install
+## Install
 
 ```bash
-# npm
-npm i vue-screen-size
-
-# yarn
 yarn add vue-screen-size
 ```
 
@@ -34,7 +32,7 @@ Or you can include it through the browser at the bottom of your page:
 <script src="https://unpkg.com/vue-screen-size/dist/vue-screen-size.min.js"></script>
 ```
 
-### About
+## About
 
 Sometimes when building an app you need to have access to the screen's dimensions. Usually that's going to be done in the css using `@media` - but sometimes you need to access that info right in your JavaScript.
 
@@ -42,74 +40,72 @@ The issue with this is you have to worry about adding event listeners and then r
 
 There is something to consider - where and how you include this library. There are two ways, make sure to be aware of the differences:
 
-### Usage Example 1 - Whole app has access (Not Recommended)
+## Usage Example 1 - Whole app has access (Not Recommended)
 
 In this usage - your whole app - and every child component - has access to the `$vssWidth`, `$vssHeight`, and `$vssEvent` variables. This is sorta pollutive though, as multiple instances of the mixin are initialized and it's kinda wasteful. The is due to the way Vue mixins are passed down to child components. You can read more about this [here](https://vuejs.org/v2/guide/mixins.html#Global-Mixin). The second example is recommended.
 
 ```javascript
-import VueScreenSize from 'vue-screen-size'
-Vue.use(VueScreenSize)
+import { VueScreenSizeMixin } from 'vue-screen-size';
+
+app.mixin(VueScreenSizeMixin);
 
 // Access `this.$vssWidth`, `this.$vssHeight`, and `this.$vssEvent` anywhere in your app.
 ```
 
-### Usage Example 2 - Just the component you install it on has access - (Recommended)
+## Usage Example 2 - Just the component you install it on has access - (Recommended)
 
 In this usage - the component you install it on will have access to the `$vssWidth`, `$vssHeight`, and `$vssEvent` variables. This may be a bit more restrictive, but it's less wasteful and should give you better performance.
 
 ```javascript
-import VueScreenSize from 'vue-screen-size'
+import { VueScreenSizeMixin } from 'vue-screen-size';
 
 export default {
-    ...
-    mixins: [VueScreenSize.VueScreenSizeMixin],
-    ...
-}
+  mixins: [VueScreenSizeMixin],
+};
 
 // Access `this.$vssWidth`, `this.$vssHeight`, and `this.$vssEvent` in your component.
 ```
-### Variables
 
-| name | type | description |
-|--------|------------|-------------|
-| $vssWidth | Number | The width of your screen |
-| $vssHeight | Number | The height of your screen |
-| $vssEvent | Object | The event object data from the resizing event. |
+## Variables
 
-### Methods
+| name       | type   | description                                    |
+| ---------- | ------ | ---------------------------------------------- |
+| $vssWidth  | Number | The width of your screen                       |
+| $vssHeight | Number | The height of your screen                      |
+| $vssEvent  | Object | The event object data from the resizing event. |
 
-| method | parameters | description |
-|--------|------------|-------------|
-| $vssDestroyListener | none | Force the removal of the attached event listener |
+## Methods
 
-### Development
+| method              | parameters | description                                      |
+| ------------------- | ---------- | ------------------------------------------------ |
+| $vssDestroyListener | none       | Force the removal of the attached event listener |
+
+## Development
 
 ```bash
-# install dependencies
-npm install
+# Install dependencies
+yarn
 
-# serve with hot reload
-npm run watch
+# Serve with hot reload
+yarn dev
 
-# run the tests
-npm run test
+# Run the tests
+yarn test
 
-# build demo page
-npm run build:example
+# Build demo page
+yarn build:example
 
-# build
-npm run build
+# Build library
+yarn build:library
 
-# publish to npm
-npm publish
+# Build everything and run tests
+yarn build
 ```
 
-### Other
+## Other
 
 Go ahead and fork the project! Submit an issue if needed. Have fun!
 
-### License
+## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-Packaged with a mixture of [vue-lib-template](https://github.com/biigpongsatorn/vue-lib-template) and [vue-sfc-rollup](https://github.com/team-innovation/vue-sfc-rollup).
