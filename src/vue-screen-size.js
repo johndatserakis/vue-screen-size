@@ -1,52 +1,45 @@
-import Vue from 'vue'
-
-const reactiveComponent = new Vue({
-    data() {
-        return {
-            event: null,
-            vssWidth: null,
-            vssHeight: null
-        }
-    }
-})
-
 export default {
-    computed: {
-        $vssEvent() {
-            return reactiveComponent.event
-        },
-        $vssWidth() {
-            return reactiveComponent.vssWidth || this.getScreenWidth()
-        },
-        $vssHeight() {
-            return reactiveComponent.vssHeight || this.getScreenHeight()
-        }
+  data() {
+    return {
+      event: null,
+      vssWidth: null,
+      vssHeight: null,
+    };
+  },
+  computed: {
+    $vssEvent() {
+      return this.event;
     },
-    methods: {
-        getScreenWidth() {
-            return window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth
-        },
-        getScreenHeight() {
-            return window.innerHeight
-            || document.documentElement.clientHeight
-            || document.body.clientHeight
-        },
-        handleResize(event) {
-            reactiveComponent.event = event
-            reactiveComponent.vssWidth = this.getScreenWidth()
-            reactiveComponent.vssHeight = this.getScreenHeight()
-        },
+    $vssWidth() {
+      return this.vssWidth || this.getScreenWidth();
+    },
+    $vssHeight() {
+      return this.vssHeight || this.getScreenHeight();
+    },
+  },
+  methods: {
+    getScreenWidth() {
+      return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    },
+    getScreenHeight() {
+      return (
+        window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+      );
+    },
+    handleResize(event) {
+      this.event = event;
+      this.vssWidth = this.getScreenWidth();
+      this.vssHeight = this.getScreenHeight();
+    },
 
-        $vssDestroyListener() {
-            window.removeEventListener('resize', this.handleResize)
-        }
+    $vssDestroyListener() {
+      window.removeEventListener('resize', this.handleResize);
     },
-    mounted() {
-        window.addEventListener('resize', this.handleResize)
-    },
-    destroyed() {
-        window.removeEventListener('resize', this.handleResize)
-    }
-}
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+};

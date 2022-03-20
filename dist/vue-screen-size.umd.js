@@ -1,73 +1,62 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
-    typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
-    (factory((global.VueScreenSize = {}),global.Vue));
-}(this, (function (exports,Vue) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.VueScreenSize = {}));
+}(this, (function (exports) { 'use strict';
 
-    Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
+  var VueScreenSizeMixin = {
+    data: function data() {
+      return {
+        event: null,
+        vssWidth: null,
+        vssHeight: null,
+      };
+    },
+    computed: {
+      $vssEvent: function $vssEvent() {
+        return this.event;
+      },
+      $vssWidth: function $vssWidth() {
+        return this.vssWidth || this.getScreenWidth();
+      },
+      $vssHeight: function $vssHeight() {
+        return this.vssHeight || this.getScreenHeight();
+      },
+    },
+    methods: {
+      getScreenWidth: function getScreenWidth() {
+        return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      },
+      getScreenHeight: function getScreenHeight() {
+        return (
+          window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        );
+      },
+      handleResize: function handleResize(event) {
+        this.event = event;
+        this.vssWidth = this.getScreenWidth();
+        this.vssHeight = this.getScreenHeight();
+      },
 
-    var reactiveComponent = new Vue({
-        data: function data() {
-            return {
-                event: null,
-                vssWidth: null,
-                vssHeight: null
-            }
-        }
-    });
+      $vssDestroyListener: function $vssDestroyListener() {
+        window.removeEventListener('resize', this.handleResize);
+      },
+    },
+    mounted: function mounted() {
+      window.addEventListener('resize', this.handleResize);
+    },
+    destroyed: function destroyed() {
+      window.removeEventListener('resize', this.handleResize);
+    },
+  };
 
-    var VueScreenSizeMixin = {
-        computed: {
-            $vssEvent: function $vssEvent() {
-                return reactiveComponent.event
-            },
-            $vssWidth: function $vssWidth() {
-                return reactiveComponent.vssWidth || this.getScreenWidth()
-            },
-            $vssHeight: function $vssHeight() {
-                return reactiveComponent.vssHeight || this.getScreenHeight()
-            }
-        },
-        methods: {
-            getScreenWidth: function getScreenWidth() {
-                return window.innerWidth
-                || document.documentElement.clientWidth
-                || document.body.clientWidth
-            },
-            getScreenHeight: function getScreenHeight() {
-                return window.innerHeight
-                || document.documentElement.clientHeight
-                || document.body.clientHeight
-            },
-            handleResize: function handleResize(event) {
-                reactiveComponent.event = event;
-                reactiveComponent.vssWidth = this.getScreenWidth();
-                reactiveComponent.vssHeight = this.getScreenHeight();
-            },
+  var install = function (app) {
+    app.mixin(VueScreenSizeMixin);
+  };
 
-            $vssDestroyListener: function $vssDestroyListener() {
-                window.removeEventListener('resize', this.handleResize);
-            }
-        },
-        mounted: function mounted() {
-            window.addEventListener('resize', this.handleResize);
-        },
-        destroyed: function destroyed() {
-            window.removeEventListener('resize', this.handleResize);
-        }
-    }
+  exports.VueScreenSizeMixin = VueScreenSizeMixin;
+  exports.default = install;
 
-    var install = function (Vue$$1) {
-        Vue$$1.mixin(VueScreenSizeMixin);
-    };
-
-    // Note that here we're not only exporting the install function, but
-    // also the mixin itself - this is so with can `Vue.use()` or
-    // `mixins: [],` it.
-    var index = { install: install, VueScreenSizeMixin: VueScreenSizeMixin }
-
-    exports.default = index;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
