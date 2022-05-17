@@ -6,7 +6,6 @@
   "bugs": {
     "url": "https://github.com/johndatserakis/vue-screen-size/issues"
   },
-  "dependencies": {},
   "description": "Get easy and reactive access to the width and height of your screen.",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -88,5 +87,5 @@
   },
   "sideEffects": false,
   "unpkg": "dist/vue-screen-size.min.js",
-  "version": "2.0.0"
+  "version": "2.0.1"
 }
