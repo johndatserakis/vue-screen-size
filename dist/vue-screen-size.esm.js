@@ -31,7 +31,6 @@ var VueScreenSizeMixin = {
       this.vssWidth = this.getScreenWidth();
       this.vssHeight = this.getScreenHeight();
     },
-
     $vssDestroyListener: function $vssDestroyListener() {
       window.removeEventListener('resize', this.handleResize);
     },
