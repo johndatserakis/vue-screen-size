@@ -76,6 +76,7 @@
     "dev": "vite"
   },
   "sideEffects": false,
+  "typings": "src/types.d.ts",
   "unpkg": "dist/vue-screen-size.min.js",
   "version": "2.0.4"
 }
