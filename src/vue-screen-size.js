@@ -31,7 +31,6 @@ export default {
       this.vssWidth = this.getScreenWidth();
       this.vssHeight = this.getScreenHeight();
     },
-
     $vssDestroyListener() {
       window.removeEventListener('resize', this.handleResize);
     },
